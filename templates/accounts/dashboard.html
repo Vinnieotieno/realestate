@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+{% load humanize %}
+
+{% block title %}My Dashboard{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2><i class="fas fa-tachometer-alt"></i> My Dashboard</h2>
+                <hr>
+                
+                <!-- Property Viewings -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h4><i class="fas fa-eye"></i> Property Viewings</h4>
+                    </div>
+                    <div class="card-body">
+                        {% with viewing_bookings=bookings|dictsort:"booking_type" %}
+                            {% if viewing_bookings %}
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Property</th>
+                                                <th>Realtor</th>
+                                                <th>Viewing Date</th>
+                                                <th>Viewing Time</th>
+                                                <th>Status</th>
+                                                <th>Booked On</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for booking in bookings %}
+                                                {% if booking.booking_type == 'viewing' %}
+                                                <tr>
+                                                    <td>
+                                                        <a href="{% url 'listing' booking.listing.slug %}">
+                                                            {{ booking.listing.title }}
+                                                        </a>
+                                                    </td>
+                                                    <td>{{ booking.listing.realtor }}</td>
+                                                    <td>{{ booking.date }}</td>
+                                                    <td>{{ booking.time }}</td>
+                                                    <td>
+                                                        <span class="badge bg-{{ booking.status|yesno:'success,warning' }}">
+                                                            {{ booking.get_status_display }}
+                                                        </span>
+                                                    </td>
+                                                    <td>{{ booking.created_at|date:"M d, Y" }}</td>
+                                                </tr>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            {% else %}
+                                <div class="alert alert-info">
+                                    <i class="fas fa-info-circle"></i>
+                                    You haven't scheduled any property viewings yet. <a href="{% url 'listings' %}">Browse properties</a> to schedule a viewing.
+                                </div>
+                            {% endif %}
+                        {% endwith %}
+                    </div>
+                </div>
+
+                <!-- Airbnb Bookings -->
+                <div class="card">
+                    <div class="card-header">
+                        <h4><i class="fas fa-bed"></i> Airbnb Bookings</h4>
+                    </div>
+                    <div class="card-body">
+                        {% with airbnb_bookings=bookings %}
+                            {% if airbnb_bookings %}
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Property</th>
+                                                <th>Realtor</th>
+                                                <th>Check-in</th>
+                                                <th>Check-out</th>
+                                                <th>Status</th>
+                                                <th>Booked On</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for booking in bookings %}
+                                                {% if booking.booking_type == 'airbnb' %}
+                                                <tr>
+                                                    <td>
+                                                        <a href="{% url 'listing' booking.listing.slug %}">
+                                                            {{ booking.listing.title }}
+                                                        </a>
+                                                    </td>
+                                                    <td>{{ booking.listing.realtor }}</td>
+                                                    <td>{{ booking.check_in_date }} at {{ booking.check_in_time }}</td>
+                                                    <td>{{ booking.check_out_date }} at {{ booking.check_out_time }}</td>
+                                                    <td>
+                                                        <span class="badge bg-{{ booking.status|yesno:'success,warning' }}">
+                                                            {{ booking.get_status_display }}
+                                                        </span>
+                                                    </td>
+                                                    <td>{{ booking.created_at|date:"M d, Y" }}</td>
+                                                </tr>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            {% else %}
+                                <div class="alert alert-info">
+                                    <i class="fas fa-info-circle"></i>
+                                    You haven't booked any Airbnb properties yet. <a href="{% url 'listings' %}">Browse Airbnb properties</a> to make a booking.
+                                </div>
+                            {% endif %}
+                        {% endwith %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

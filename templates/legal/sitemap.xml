@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Static Pages -->
+  {% for url in static_urls %}
+  <url>
+    <loc>{{ protocol }}://{{ domain }}{{ url.url }}</loc>
+    <changefreq>{{ url.changefreq }}</changefreq>
+    <priority>{{ url.priority }}</priority>
+  </url>
+  {% endfor %}
+  
+  <!-- Listings -->
+  {% for listing in listings %}
+  <url>
+    <loc>{{ protocol }}://{{ domain }}/listings/{{ listing.slug }}/</loc>
+    <lastmod>{{ listing.list_date|date:'c' }}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  {% endfor %}
+  
+  <!-- Services -->
+  {% for service in services %}
+  <url>
+    <loc>{{ protocol }}://{{ domain }}/services/{{ service.slug }}/</loc>
+    <lastmod>{{ service.updated_at|date:'c' }}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  {% endfor %}
+  
+  <!-- Blog Posts -->
+  {% for blog in blogs %}
+  <url>
+    <loc>{{ protocol }}://{{ domain }}/blog/{{ blog.slug }}/</loc>
+    <lastmod>{{ blog.posted_at|date:'c' }}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  {% endfor %}
+  
+  <!-- Legal Pages -->
+  {% for legal in legal_pages %}
+  <url>
+    <loc>{{ protocol }}://{{ domain }}/legal/{{ legal.slug }}/</loc>
+    <lastmod>{{ legal.last_updated|date:'c' }}</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  {% endfor %}
+  
+  <!-- Custom URLs -->
+  {% for custom in custom_urls %}
+  <url>
+    <loc>{{ protocol }}://{{ domain }}{{ custom.url }}</loc>
+    <lastmod>{{ custom.last_modified|date:'c' }}</lastmod>
+    <changefreq>{{ custom.changefreq }}</changefreq>
+    <priority>{{ custom.priority }}</priority>
+  </url>
+  {% endfor %}
+</urlset>

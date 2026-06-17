@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="format-detection" content="telephone=no">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <!-- Primary Meta Tags -->
+  <title>{% block title %}DeeValley - Premium Real Estate in Kenya{% endblock %}</title>
+  <meta name="title" content="{% block meta_title %}DeeValley - Premium Real Estate in Kenya{% endblock %}">
+  <meta name="description" content="{% block meta_description %}Discover premium real estate in Kenya with DeeValley. Find luxury homes, apartments, commercial properties, and investment opportunities.{% endblock %}">
+  <meta name="keywords" content="{% block meta_keywords %}real estate Kenya, luxury homes Nairobi, property investment Kenya, apartments for sale, commercial property Kenya{% endblock %}">
+  <meta name="author" content="DeeValley">
+  <meta name="robots" content="{% block robots %}index, follow{% endblock %}">
+  <meta name="language" content="English">
+  <meta name="revisit-after" content="7 days">
+  <meta name="theme-color" content="#10284e">
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+  <link rel="stylesheet" href="{% static 'css/all.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'css/lightbox.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/cookie-consent.css' %}">
+  {% block extra_css %}{% endblock %}
+  
+  {% block extra_head %}{% endblock %}
+</head>
+
+<body>
+  <!-- Top Bar -->
+  {% include 'partials/_topbar.html' %}
+
+  <!-- Navbar -->
+  {% include 'partials/_navbar.html' %}
+
+  <!-- Main Content -->
+  <main id="main-content" role="main">
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- Footer -->
+  {% include 'partials/_footer.html' %}
+
+  <!-- WhatsApp Chatbot -->
+  {% include 'partials/_whatsapp_chatbot.html' %}
+
+  <!-- Scripts -->
+  <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'js/lightbox.min.js' %}"></script>
+  <script src="{% static 'js/main.js' %}"></script>
+  {% block extra_js %}{% endblock %}
+</body>
+</html>

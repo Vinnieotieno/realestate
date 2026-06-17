@@ -1,0 +1,21 @@
+{
+  "name": "DeeValley Real Estate",
+  "short_name": "DeeValley",
+  "description": "Premium real estate services in Kenya",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#30caa0",
+  "icons": [
+    {
+      "src": "/static/img/favicon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/static/img/favicon-512.png", 
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

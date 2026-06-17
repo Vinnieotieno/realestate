@@ -1,0 +1,50 @@
+#header {
+  height: 50px;
+  background: #10284e;
+  color: #fff;
+}
+
+#branding h1 {
+  color: #fff;
+}
+
+a:link,
+a:visited {
+  color:#10284e;
+}
+
+div.breadcrumbs {
+  background: #30caa0;
+  color: #10284e;
+}
+
+div.breadcrumbs a {
+  color: #333;
+}
+
+.module h2, .module caption, .inline-group h2 {
+  background: #30caa0;
+}
+
+.button, input[type=submit], input[type=button], .submit-row input, a.button {
+  background: #10284e;
+  color: #fff;
+}
+
+.brand_img {
+  border-radius: 6px;
+  margin-right: 10px;
+  filter: drop-shadow(0 2px 4px rgba(48, 202, 160, 0.2));
+  transition: all 0.3s ease;
+}
+
+.brand_img:hover {
+  transform: scale(1.02);
+  filter: drop-shadow(0 4px 8px rgba(48, 202, 160, 0.3));
+}
+
+#head {
+  display: flex;
+  align-items: center;
+  color: var(--brand-blue, #10284e) !important;
+}
