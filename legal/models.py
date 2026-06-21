@@ -35,9 +35,9 @@ class LegalPage(models.Model):
         if not self.slug:
             self.slug = slugify(self.title)
         if not self.meta_title:
-            self.meta_title = f"{self.title} | DeeValley"
+            self.meta_title = f"{self.title} | Kenya Realestate Platform"
         if not self.meta_description:
-            self.meta_description = f"Read our {self.get_page_type_display().lower()} at DeeValley. Updated {self.last_updated.strftime('%B %Y')}."
+            self.meta_description = f"Read our {self.get_page_type_display().lower()} on Kenya Realestate Platform. Updated {self.last_updated.strftime('%B %Y')}."
         super().save(*args, **kwargs)
     
     def get_absolute_url(self):
@@ -48,9 +48,14 @@ class LegalPage(models.Model):
 
 class SEOSettings(models.Model):
     """Global SEO settings for the website"""
-    site_name = models.CharField(max_length=100, default="DeeValley")
-    site_description = models.CharField(max_length=160, default="Kenya's premier real estate platform")
-    site_keywords = models.TextField(default="real estate Kenya, property Kenya, homes for sale, apartments for rent")
+    site_name = models.CharField(max_length=100, default="Kenya Realestate Platform")
+    site_description = models.CharField(
+        max_length=160,
+        default="Kenya Realestate Platform — buy, rent, and manage verified properties across Kenya."
+    )
+    site_keywords = models.TextField(
+        default="Kenya real estate platform, property for sale Kenya, houses for rent Nairobi, Airbnb Kenya, property management Kenya"
+    )
     
     # Social Media
     facebook_url = models.URLField(blank=True)

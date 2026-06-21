@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %} | {{ service.meta_title }} | DeeValley {% endblock %}
+{% block title %} | {{ service.meta_title }} | {{ site_name }} {% endblock %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/services.css' %}">
@@ -9,7 +9,7 @@
 
 {% block meta %}
 <meta name="description" content="{{ service.meta_description }}">
-<meta name="keywords" content="{{ service.title }}, real estate, DeeValley, Kenya">
+<meta name="keywords" content="{{ service.title }}, real estate, {{ site_name }}, Kenya">
 <meta property="og:title" content="{{ service.meta_title }}" />
 <meta property="og:description" content="{{ service.meta_description }}" />
 <meta property="og:type" content="article" />

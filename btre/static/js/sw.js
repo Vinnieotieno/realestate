@@ -1,5 +1,5 @@
 // Service Worker for caching
-const CACHE_NAME = 'deevalley-v1';
+const CACHE_NAME = 'kenya-realestate-platform-v1';
 const urlsToCache = [
   '/',
   '/static/css/bootstrap.css',

@@ -1,14 +1,14 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %} | Our Services | DeeValley {% endblock %}
+{% block title %} | Our Services | {{ site_name }} {% endblock %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/services.css' %}">
 {% endblock %}
 
 {% block meta %}
-<meta name="description" content="Discover our comprehensive real estate services at DeeValley. From property sales to investment advisory, we provide expert solutions for all your real estate needs in Kenya.">
+<meta name="description" content="Discover our comprehensive real estate services at {{ site_name }}. From property sales to investment advisory, we provide expert solutions for all your real estate needs in Kenya.">
 <meta name="keywords" content="real estate services, property management, investment advisory, property sales, rentals, Kenya real estate">
 {% endblock %}
 

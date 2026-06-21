@@ -9,7 +9,7 @@
 <meta name="keywords" content="{{ page.meta_keywords }}">
 {% endif %}
 <meta name="robots" content="index, follow">
-<meta name="author" content="DeeValley">
+<meta name="author" content="{{ site_name }}">
 <meta name="last-modified" content="{{ page.last_updated|date:'c' }}">
 
 <!-- Open Graph -->
@@ -17,7 +17,7 @@
 <meta property="og:description" content="{{ page.meta_description }}" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="{{ request.build_absolute_uri }}" />
-<meta property="og:site_name" content="DeeValley" />
+<meta property="og:site_name" content="{{ site_name }}" />
 <meta property="article:modified_time" content="{{ page.last_updated|date:'c' }}" />
 
 <!-- Twitter -->
@@ -40,7 +40,7 @@
   "datePublished": "{{ page.effective_date|date:'c' }}",
   "publisher": {
     "@type": "Organization",
-    "name": "DeeValley",
+    "name": "{{ site_name }}",
     "url": "{{ request.scheme }}://{{ request.get_host }}"
   }
 }

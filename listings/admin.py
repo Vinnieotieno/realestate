@@ -1,13 +1,12 @@
-from django.contrib import admin
+from django.contrib import admin, messages
 from .models import Listing, Booking
 from .forms import ListingAdminForm
 
 class ListingAdmin(admin.ModelAdmin):
     form = ListingAdminForm
-    list_display = ('id', 'title', 'property_type', 'is_published', 'price', 'list_date', 'realtor', 'city', 'state')
+    list_display = ('id', 'title', 'property_type', 'is_published', 'realtor_verified', 'price', 'list_date', 'realtor', 'city', 'state')
     list_display_links = ('id', 'title')
-    list_filter = ('property_type', 'realtor', 'city', 'state', 'is_published', 'bedrooms', 'bathrooms')
-    list_editable = ('is_published',)
+    list_filter = ('property_type', 'realtor', 'realtor__is_verified', 'city', 'state', 'is_published', 'bedrooms', 'bathrooms')
     search_fields = ('title', 'description', 'address', 'city', 'state', 'zipcode', 'price')
     list_per_page = 25
     prepopulated_fields = {'slug': ('title',)}
@@ -41,6 +40,22 @@ class ListingAdmin(admin.ModelAdmin):
             'all': ('admin/css/amenities-admin.css',)
         }
         js = ('admin/js/amenities-admin.js',)
+
+    def realtor_verified(self, obj):
+        return obj.realtor.is_verified
+
+    realtor_verified.boolean = True
+    realtor_verified.short_description = 'Realtor verified'
+
+    def save_model(self, request, obj, form, change):
+        if obj.is_published and obj.realtor_id and not obj.realtor.is_verified:
+            self.message_user(
+                request,
+                'Listing saved as unpublished because the assigned realtor is not verified yet.',
+                messages.WARNING,
+            )
+            obj.is_published = False
+        super().save_model(request, obj, form, change)
 
 class BookingAdmin(admin.ModelAdmin):
     list_display = ('listing', 'get_booking_type', 'client', 'client_email', 'get_booking_period', 'status', 'created_at')

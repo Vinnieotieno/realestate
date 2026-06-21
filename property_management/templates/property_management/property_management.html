@@ -1,19 +1,16 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Professional Property Management Services in Kenya | DeeValley{% endblock %}
+{% block title %}Property Management in Kenya | {{ site_name }}{% endblock %}
 
-{% block meta %}
-  <meta name="description" content="DeeValley provides professional property management services in Kenya. We manage residential and commercial properties on behalf of owners, handling tenant management, maintenance, and rent collection.">
-  <meta name="keywords" content="property management Kenya, property management services, residential property management, commercial property management, property management company Kenya">
-  <meta name="author" content="DeeValley">
-  <meta property="og:title" content="Professional Property Management Services | DeeValley">
-  <meta property="og:description" content="Expert property management services in Kenya. We handle all aspects of property management for property owners.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://deevalley.com/property-management/">
-  <meta name="robots" content="index, follow">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-{% endblock %}
+{% block meta_description %}{{ site_name }} provides professional property management in Kenya — tenant management, maintenance scheduling, rent collection, and owner reporting.{% endblock %}
+
+{% block og_title %}Property Management Services | {{ site_name }}{% endblock %}
+
+{% block og_description %}Expert residential and commercial property management across Kenya.{% endblock %}
+
+{% block og_url %}{{ site_url }}/property-management/{% endblock %}
+{% block canonical_url %}{{ site_url }}/property-management/{% endblock %}
 
 {% block content %}
 <!-- Hero Section 
@@ -29,7 +26,7 @@
           Expert Property Management Services
         </h1>
         <p class="pm-hero-subtitle">
-          Let DeeValley manage your properties while you focus on what matters. We handle everything from tenant management to maintenance and rent collection.
+          Let {{ site_name }} manage your properties while you focus on what matters. We handle everything from tenant management to maintenance and rent collection.
         </p>
         <div class="pm-hero-features">
           <div class="pm-feature-item">
@@ -139,7 +136,7 @@
   <div class="container-fluid px-4 px-lg-5">
     <div class="row mb-5">
       <div class="col-lg-8 mx-auto text-center">
-        <h2 class="pm-section-title">Why Choose DeeValley for Property Management?</h2>
+        <h2 class="pm-section-title">Why Choose {{ site_name }} for Property Management?</h2>
         <p class="pm-section-subtitle">
           We're committed to maximizing your property's value and providing peace of mind
         </p>

@@ -7,6 +7,12 @@ from django.contrib.auth.models import User
 import uuid
 from django.urls import reverse
 
+class ListingQuerySet(models.QuerySet):
+    def public(self):
+        """Published listings attached to admin-verified realtors."""
+        return self.filter(is_published=True, realtor__is_verified=True)
+
+
 class Listing(models.Model):
   PROPERTY_TYPES = [
     ('sale', 'For Sale'),
@@ -42,6 +48,8 @@ class Listing(models.Model):
   latitude = models.FloatField(null=True, blank=True)
   longitude = models.FloatField(null=True, blank=True)
 
+  objects = ListingQuerySet.as_manager()
+
   def save(self, *args, **kwargs):
     if not self.slug:
       self.slug = slugify(self.title)
@@ -55,9 +63,7 @@ class Listing(models.Model):
 
   def get_related_listings(self, limit=4):
     """Get related listings based on location, price, and features"""
-    related = Listing.objects.filter(
-        is_published=True
-    ).exclude(id=self.id)
+    related = Listing.objects.public().exclude(id=self.id)
     
     # Priority 1: Same city and similar price range (±30%)
     price_min = self.price * 0.7

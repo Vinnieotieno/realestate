@@ -8,18 +8,58 @@
   <meta name="format-detection" content="telephone=no">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  
-  <!-- Primary Meta Tags -->
-  <title>{% block title %}DeeValley - Premium Real Estate in Kenya{% endblock %}</title>
-  <meta name="title" content="{% block meta_title %}DeeValley - Premium Real Estate in Kenya{% endblock %}">
-  <meta name="description" content="{% block meta_description %}Discover premium real estate in Kenya with DeeValley. Find luxury homes, apartments, commercial properties, and investment opportunities.{% endblock %}">
-  <meta name="keywords" content="{% block meta_keywords %}real estate Kenya, luxury homes Nairobi, property investment Kenya, apartments for sale, commercial property Kenya{% endblock %}">
-  <meta name="author" content="DeeValley">
-  <meta name="robots" content="{% block robots %}index, follow{% endblock %}">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <title>{% block title %}{{ site_name }} | {{ site_tagline }}{% endblock %}</title>
+  <meta name="title" content="{% block meta_title %}{{ site_name }} | {{ site_tagline }}{% endblock %}">
+  <meta name="description" content="{% block meta_description %}{{ site_description }}{% endblock %}">
+  <meta name="keywords" content="{% block meta_keywords %}{{ site_keywords }}{% endblock %}">
+  <meta name="author" content="{{ site_name }}">
+  <meta name="robots" content="{% block robots %}index, follow, max-image-preview:large{% endblock %}">
   <meta name="language" content="English">
-  <meta name="revisit-after" content="7 days">
+  <meta name="geo.region" content="KE">
+  <meta name="geo.placename" content="Nairobi, Kenya">
   <meta name="theme-color" content="#10284e">
-  
+
+  <link rel="canonical" href="{% block canonical_url %}{{ canonical_url }}{% endblock %}">
+  <link rel="icon" href="{% static 'img/favicon-192.png' %}" type="image/png">
+  <link rel="apple-touch-icon" href="{% static 'img/favicon-192.png' %}">
+  <link rel="manifest" href="{% static 'img/site.webmanifest' %}">
+
+  <meta property="og:type" content="{% block og_type %}website{% endblock %}">
+  <meta property="og:site_name" content="{{ site_name }}">
+  <meta property="og:locale" content="en_KE">
+  <meta property="og:title" content="{% block og_title %}{{ site_name }} | {{ site_tagline }}{% endblock %}">
+  <meta property="og:description" content="{% block og_description %}{{ site_description }}{% endblock %}">
+  <meta property="og:url" content="{% block og_url %}{{ canonical_url }}{% endblock %}">
+  <meta property="og:image" content="{% block og_image %}{{ site_url }}{% static 'img/showcase.avif' %}{% endblock %}">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{% block twitter_title %}{{ site_name }} | {{ site_tagline }}{% endblock %}">
+  <meta name="twitter:description" content="{% block twitter_description %}{{ site_description }}{% endblock %}">
+  <meta name="twitter:image" content="{% block twitter_image %}{{ site_url }}{% static 'img/showcase.avif' %}{% endblock %}">
+
+  {% block meta %}{% endblock %}
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "RealEstateAgent",
+    "name": "{{ site_name|escapejs }}",
+    "url": "{{ site_url }}",
+    "description": "{{ site_description|escapejs }}",
+    "areaServed": {
+      "@type": "Country",
+      "name": "Kenya"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Nairobi",
+      "addressCountry": "KE"
+    }
+  }
+  </script>
+
   <!-- CSS -->
   <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
   <link rel="stylesheet" href="{% static 'css/all.css' %}">
@@ -27,29 +67,23 @@
   <link rel="stylesheet" href="{% static 'css/lightbox.min.css' %}">
   <link rel="stylesheet" href="{% static 'css/cookie-consent.css' %}">
   {% block extra_css %}{% endblock %}
-  
+
   {% block extra_head %}{% endblock %}
 </head>
 
 <body>
-  <!-- Top Bar -->
-  {% include 'partials/_topbar.html' %}
+  <header class="site-header" id="site-header">
+    {% include 'partials/_topbar.html' %}
+    {% include 'partials/_navbar.html' %}
+  </header>
 
-  <!-- Navbar -->
-  {% include 'partials/_navbar.html' %}
-
-  <!-- Main Content -->
   <main id="main-content" role="main">
     {% block content %}{% endblock %}
   </main>
 
-  <!-- Footer -->
   {% include 'partials/_footer.html' %}
-
-  <!-- WhatsApp Chatbot -->
   {% include 'partials/_whatsapp_chatbot.html' %}
 
-  <!-- Scripts -->
   <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
   <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
   <script src="{% static 'js/lightbox.min.js' %}"></script>

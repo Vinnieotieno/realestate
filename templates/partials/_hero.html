@@ -1,5 +1,5 @@
 {% load static %}
-<!-- Modern Hero Section for DeeValley -->
+<!-- Modern Hero Section for {{ site_name }} -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 <style>
   .vincent-hero {
@@ -158,10 +158,10 @@
   <div class="vincent-hero-animated-overlay"></div>
   <div class="vincent-hero-content">
     <div class="vincent-hero-logo">
-      <img src="{% static 'img/logo.jpeg' %}" alt="DeeValley Logo" style="width:52px;height:auto;max-width:120px;object-fit:contain;border-radius:6px;">
+      <img src="{% static 'img/logo.jpeg' %}" alt="{{ site_name }} Logo" style="width:52px;height:auto;max-width:120px;object-fit:contain;border-radius:6px;">
     </div>
     <div class="vincent-hero-title">Find Your Dream Home</div>
-    <div class="vincent-hero-highlight">with DeeValley</div>
+    <div class="vincent-hero-highlight">with {{ site_name }}</div>
     <div class="hero-sub">Kenya's trusted platform for buying, renting, and investing in real estate. Discover properties, connect with expert agents, and move forward with confidence.</div>
     <a href="{% url 'property_management' %}" class="btn">Property Management</a>
   </div>

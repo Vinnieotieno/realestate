@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}{{ blog.title }} | DeeValley Blog{% endblock %}
+{% block title %}{{ blog.title }} | {{ site_name }} Blog{% endblock %}
 
 {% block meta %}
   <meta name="description" content="{{ blog.short_description }}">
@@ -10,7 +10,7 @@
   <meta property="og:title" content="{{ blog.title }}" />
   <meta property="og:description" content="{{ blog.short_description }}" />
   <meta property="og:type" content="article" />
-  <meta property="og:url" content="https://deevalley.com/blog/{{ blog.slug }}/" />
+  <meta property="og:url" content="{{ site_url }}/blog/{{ blog.slug }}/" />
   <meta property="og:image" content="{{ blog.image.url }}" />
   <meta property="article:published_time" content="{{ blog.posted_at|date:'c' }}" />
   <meta property="article:author" content="{{ blog.author }}" />

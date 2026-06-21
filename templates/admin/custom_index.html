@@ -1,0 +1,48 @@
+{% extends "admin/index.html" %}
+
+{% block content %}
+<div id="content-main">
+  <div class="module realtor-verification-dashboard" id="realtor-verification-dashboard">
+    <table summary="Realtor verification overview">
+      <caption>
+        <a href="{% url 'admin:realtors_realtor_changelist' %}" class="section">Realtor verification</a>
+      </caption>
+      <tbody>
+        <tr>
+          <th scope="row">Verified realtors</th>
+          <td>{{ verified_realtor_count }} of {{ total_realtor_count }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Pending verification</th>
+          <td>
+            {% if pending_realtor_count %}
+              <strong style="color:#b45309;">{{ pending_realtor_count }} awaiting admin review</strong>
+            {% else %}
+              <span style="color:#15803d;">All realtors verified</span>
+            {% endif %}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    {% if pending_realtors %}
+    <div class="realtor-pending-list">
+      <h3>Pending realtors</h3>
+      <ul>
+        {% for realtor in pending_realtors %}
+        <li>
+          <a href="{% url 'admin:realtors_realtor_change' realtor.id %}">{{ realtor.name }}</a>
+          <span class="realtor-meta">{{ realtor.email }} · {{ realtor.phone }}</span>
+        </li>
+        {% endfor %}
+      </ul>
+      <p class="realtor-dashboard-actions">
+        <a href="{% url 'admin:realtors_realtor_changelist' %}?is_verified__exact=0" class="button">Review pending realtors</a>
+      </p>
+    </div>
+    {% endif %}
+  </div>
+
+  {% include "admin/app_list.html" with app_list=app_list show_changelinks=True %}
+</div>
+{% endblock %}

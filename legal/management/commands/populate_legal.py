@@ -72,19 +72,19 @@ class Command(BaseCommand):
             defaults={
                 'title': 'Privacy Policy',
                 'content': privacy_content,
-                'meta_title': 'Privacy Policy | DeeValley',
-                'meta_description': 'Learn how DeeValley protects your privacy and handles your personal information. Read our comprehensive privacy policy.',
-                'meta_keywords': 'privacy policy, data protection, personal information, DeeValley'
+                'meta_title': 'Privacy Policy | Kenya Realestate Platform',
+                'meta_description': 'Learn how Kenya Realestate Platform protects your privacy and handles your personal information. Read our comprehensive privacy policy.',
+                'meta_keywords': 'privacy policy, data protection, personal information, Kenya Realestate Platform'
             }
         )
         
         # Create Terms of Service
         terms_content = '''
         <h2>Acceptance of Terms</h2>
-        <p>By accessing and using DeeValley's website and services, you accept and agree to be bound by the terms and provision of this agreement.</p>
+        <p>By accessing and using Kenya Realestate Platform's website and services, you accept and agree to be bound by the terms and provision of this agreement.</p>
         
         <h2>Use License</h2>
-        <p>Permission is granted to temporarily download one copy of the materials on DeeValley's website for personal, non-commercial transitory viewing only.</p>
+        <p>Permission is granted to temporarily download one copy of the materials on Kenya Realestate Platform's website for personal, non-commercial transitory viewing only.</p>
         
         <h3>This license shall automatically terminate if you violate any of these restrictions:</h3>
         <ul>
@@ -116,7 +116,7 @@ class Command(BaseCommand):
         </ul>
         
         <h2>Limitation of Liability</h2>
-        <p>DeeValley shall not be liable for any damages arising from the use or inability to use our services, including but not limited to direct, indirect, incidental, punitive, and consequential damages.</p>
+        <p>Kenya Realestate Platform shall not be liable for any damages arising from the use or inability to use our services, including but not limited to direct, indirect, incidental, punitive, and consequential damages.</p>
         
         <h2>Governing Law</h2>
         <p>These terms and conditions are governed by and construed in accordance with the laws of Kenya, and you irrevocably submit to the exclusive jurisdiction of the courts in that State or location.</p>
@@ -138,9 +138,9 @@ class Command(BaseCommand):
             defaults={
                 'title': 'Terms of Service',
                 'content': terms_content,
-                'meta_title': 'Terms of Service | DeeValley',
-                'meta_description': 'Read DeeValley\'s terms of service and user agreement. Understand your rights and responsibilities when using our platform.',
-                'meta_keywords': 'terms of service, user agreement, terms and conditions, DeeValley'
+                'meta_title': 'Terms of Service | Kenya Realestate Platform',
+                'meta_description': 'Read Kenya Realestate Platform\'s terms of service and user agreement. Understand your rights and responsibilities when using our platform.',
+                'meta_keywords': 'terms of service, user agreement, terms and conditions, Kenya Realestate Platform'
             }
         )
         
@@ -175,25 +175,25 @@ class Command(BaseCommand):
             defaults={
                 'title': 'Cookie Policy',
                 'content': cookie_content,
-                'meta_title': 'Cookie Policy | DeeValley',
-                'meta_description': 'Learn about how DeeValley uses cookies to improve your browsing experience and provide better services.',
-                'meta_keywords': 'cookie policy, cookies, privacy, tracking, DeeValley'
+                'meta_title': 'Cookie Policy | Kenya Realestate Platform',
+                'meta_description': 'Learn about how Kenya Realestate Platform uses cookies to improve your browsing experience and provide better services.',
+                'meta_keywords': 'cookie policy, cookies, privacy, tracking, Kenya Realestate Platform'
             }
         )
         
         # Create SEO Settings
         seo_settings, created = SEOSettings.objects.get_or_create(
             defaults={
-                'site_name': 'DeeValley',
+                'site_name': 'Kenya Realestate Platform',
                 'site_description': 'Kenya\'s premier real estate platform offering luxury homes, apartments, commercial properties, and investment opportunities.',
                 'site_keywords': 'real estate Kenya, luxury homes Nairobi, property investment Kenya, apartments for sale, commercial property Kenya, land for sale, property management, real estate agent Kenya',
                 'phone': '+254 797 398004',
                 'email': 'vincentotienoakuku@gmail.com',
                 'address': 'Nairobi, Kenya',
-                'facebook_url': 'https://facebook.com/deevalley',
-                'twitter_url': 'https://twitter.com/deevalley',
-                'instagram_url': 'https://instagram.com/deevalley',
-                'linkedin_url': 'https://linkedin.com/company/deevalley',
+                'facebook_url': 'https://facebook.com/kenya-realestate-platform',
+                'twitter_url': 'https://twitter.com/kenya-realestate-platform',
+                'instagram_url': 'https://instagram.com/kenya-realestate-platform',
+                'linkedin_url': 'https://linkedin.com/company/kenya-realestate-platform',
             }
         )
         

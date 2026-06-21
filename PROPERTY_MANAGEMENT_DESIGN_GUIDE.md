@@ -64,7 +64,7 @@ Extra Bold:        800 (titles)
 │                                                     │
 │ Expert Property Management Services                 │
 │                                                     │
-│ Let DeeValley manage your properties...             │
+│ Let Kenya Realestate Platform manage your properties...             │
 │                                                     │
 │ ✓ Professional Tenant Management                    │
 │ ✓ Maintenance & Repairs                             │

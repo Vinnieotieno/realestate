@@ -13,7 +13,7 @@ from datetime import datetime, time
 import json
 
 def index(request):
-    listings = Listing.objects.order_by('-list_date').filter(is_published=True)
+    listings = Listing.objects.public().order_by('-list_date')
     
     # Get counts for category buttons
     total_count = listings.count()
@@ -45,14 +45,13 @@ def listing_by_slug(request, slug):
         raise Http404("Listing not found.")
     
     try:
-        listing = get_object_or_404(Listing, slug=slug, is_published=True)
+        listing = get_object_or_404(Listing, slug=slug, is_published=True, realtor__is_verified=True)
     except:
         # If slug doesn't work, try to find by title similarity
         from django.db.models import Q
-        similar_listings = Listing.objects.filter(
-            Q(title__icontains=slug.replace('-', ' ')) | 
+        similar_listings = Listing.objects.public().filter(
+            Q(title__icontains=slug.replace('-', ' ')) |
             Q(slug__icontains=slug),
-            is_published=True
         ).first()
         
         if similar_listings:
@@ -81,7 +80,7 @@ def listing_by_slug(request, slug):
 @login_required
 def create_booking(request, listing_id):
     if request.method == 'POST':
-        listing = get_object_or_404(Listing, id=listing_id)
+        listing = get_object_or_404(Listing, id=listing_id, is_published=True, realtor__is_verified=True)
         client_email = request.POST.get('client_email')
         client_phone = request.POST.get('client_phone')
         
@@ -208,7 +207,7 @@ def get_available_times(request, listing_id):
         if not date:
             return JsonResponse({'error': 'Date is required'}, status=400)
         
-        listing = get_object_or_404(Listing, id=listing_id)
+        listing = get_object_or_404(Listing, id=listing_id, is_published=True, realtor__is_verified=True)
         
         # All possible time slots
         all_times = [
@@ -235,7 +234,7 @@ def get_available_times(request, listing_id):
 def get_available_dates(request, listing_id):
     """AJAX endpoint for Airbnb availability"""
     if request.method == 'GET':
-        listing = get_object_or_404(Listing, id=listing_id)
+        listing = get_object_or_404(Listing, id=listing_id, is_published=True, realtor__is_verified=True)
         
         if listing.property_type != 'airbnb':
             return JsonResponse({'error': 'Not an Airbnb property'}, status=400)
@@ -262,7 +261,7 @@ def listing_legacy_by_id(request, listing_id):
 
 
 def search(request):
-    queryset_list = Listing.objects.order_by('-list_date').filter(is_published=True)
+    queryset_list = Listing.objects.public().order_by('-list_date')
     
     # Get counts for each property type for the category buttons
     total_count = queryset_list.count()

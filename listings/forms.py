@@ -46,3 +46,21 @@ class ListingAdminForm(forms.ModelForm):
         self.fields['lot_size'].help_text = 'Lot size in acres'
         self.fields['latitude'].help_text = 'Latitude coordinate for map location'
         self.fields['longitude'].help_text = 'Longitude coordinate for map location'
+
+        if 'realtor' in self.fields:
+            self.fields['realtor'].help_text = (
+                'Every listing must be attached to a realtor. '
+                'Only verified realtors can have published listings.'
+            )
+
+    def clean(self):
+        cleaned_data = super().clean()
+        is_published = cleaned_data.get('is_published')
+        realtor = cleaned_data.get('realtor')
+
+        if is_published and realtor and not realtor.is_verified:
+            raise forms.ValidationError(
+                'This listing cannot be published until the assigned realtor is verified by an admin.'
+            )
+
+        return cleaned_data

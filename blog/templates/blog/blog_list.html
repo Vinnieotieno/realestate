@@ -1,16 +1,16 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Professional Blog & News | DeeValley{% endblock %}
+{% block title %}Professional Blog & News | {{ site_name }}{% endblock %}
 
 {% block meta %}
-  <meta name="description" content="Latest blog, news, and updates from DeeValley. Industry insights, property management tips, and real estate trends.">
-  <meta name="keywords" content="blog, property management news, real estate updates, DeeValley insights">
-  <meta name="author" content="DeeValley">
-  <meta property="og:title" content="DeeValley Blog & News - Industry Insights" />
+  <meta name="description" content="Latest blog, news, and updates from {{ site_name }}. Industry insights, property management tips, and real estate trends.">
+  <meta name="keywords" content="blog, property management news, real estate updates, {{ site_name }} insights">
+  <meta name="author" content="{{ site_name }}">
+  <meta property="og:title" content="{{ site_name }} Blog & News - Industry Insights" />
   <meta property="og:description" content="Stay updated with industry news, announcements, and resources for property owners." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://deevalley.com/blog/" />
+  <meta property="og:url" content="{{ site_url }}/blog/" />
   <meta name="robots" content="index, follow">
 {% endblock %}
 
@@ -21,7 +21,7 @@
     <div class="row align-items-center py-5">
       <div class="col-lg-8 blog-hero-content">
         <h1 class="blog-hero-title">
-          DeeValley Blog & News
+          {{ site_name }} Blog & News
         </h1>
         <p class="blog-hero-subtitle">
           Industry updates, property management tips, and resources to help you make informed decisions about your properties.

@@ -1,14 +1,14 @@
 {% load static %}
 <link rel="stylesheet" href="{% static 'css/footer.css' %}">
 
-<footer class="vincent-footer" role="contentinfo" aria-label="DeeValley Footer">
+<footer class="vincent-footer" role="contentinfo" aria-label="{{ site_name }} Footer">
   <div class="container">
     <div class="footer-grid">
       <!-- Brand Section -->
       <div class="footer-brand-section">
         <div class="footer-brand">
-          <img src="{% static 'img/logo.jpeg' %}" alt="DeeValley Logo" loading="lazy">
-          <span class="footer-brand-text">DeeValley</span>
+          <img src="{% static 'img/logo.jpeg' %}" alt="{{ site_name }} Logo" loading="lazy">
+          <span class="footer-brand-text">{{ site_name }}</span>
         </div>
         <p class="footer-description">
           Your trusted partner in finding the perfect property. We specialize in premium real estate solutions across Kenya, offering exceptional service and unmatched expertise.
@@ -95,7 +95,7 @@
     <!-- Footer Bottom -->
     <div class="footer-bottom">
       <div class="footer-copyright">
-        &copy; {{ now|date:'Y' }} DeeValley. All rights reserved.
+        &copy; {{ now|date:'Y' }} {{ site_name }}. All rights reserved.
       </div>
       <div class="footer-bottom-links">
         <a href="{% url 'privacy_policy' %}" title="Privacy Policy">Privacy Policy</a>

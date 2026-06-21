@@ -40,7 +40,7 @@ def sitemap_xml(request):
     ]
     
     # Dynamic content
-    listings = Listing.objects.filter(is_published=True).values('slug', 'list_date')
+    listings = Listing.objects.public().values('slug', 'list_date')
     services = Service.objects.filter(is_active=True).values('slug', 'updated_at')
     blogs = Blog.objects.filter(published=True).values('slug', 'posted_at')
     legal_pages = LegalPage.objects.filter(is_active=True).values('slug', 'last_updated')

@@ -2,7 +2,7 @@
 
 ## 🎉 Project Complete!
 
-Your DeeValley navbar has been completely modernized and transformed into a sleek, professional, and interactive navigation bar that provides an excellent user experience.
+Your Kenya Realestate Platform navbar has been completely modernized and transformed into a sleek, professional, and interactive navigation bar that provides an excellent user experience.
 
 ## ✨ What Was Done
 

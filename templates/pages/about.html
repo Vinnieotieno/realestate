@@ -1,26 +1,19 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %} | About DeeValley - Kenya's Premier Real Estate Partner {% endblock %}
+{% block title %}About Us | {{ site_name }}{% endblock %}
 
-{% block meta %}
-  <meta name="description" content="Discover DeeValley - Kenya's trusted real estate partner. Meet our expert team, learn about our mission, and find your dream property with confidence. Professional, transparent, and customer-focused real estate services in Kenya and beyond.">
-  <meta name="keywords" content="Vincent RealEstate Solutions, Kenya real estate, property agents, real estate Kenya, property investment, house for sale Kenya, apartments for rent, real estate services, trusted realtors">
-  <meta name="author" content="DeeValley">
-  <meta name="robots" content="index, follow">
-  <meta property="og:title" content="About DeeValley - Kenya's Premier Real Estate Partner" />
-  <meta property="og:description" content="Meet our expert team and discover our mission at Vincent RealEstate Solutions. Professional, transparent, and customer-focused real estate in Kenya and beyond." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://yourdomain.com/about/" />
-  <meta property="og:image" content="https://yourdomain.com/static/img/logo.png" />
-  <meta property="og:site_name" content="DeeValley">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="About DeeValley">
-  <meta name="twitter:description" content="Kenya's trusted real estate partner for buying, renting, and investing.">
-  <link rel="canonical" href="https://yourdomain.com/about/">
-{% endblock %}
+{% block meta_description %}Learn about {{ site_name }} — Kenya's trusted real estate platform for buying, renting, Airbnb stays, and property management with expert local agents.{% endblock %}
+
+{% block og_title %}About {{ site_name }} | Kenya Real Estate Platform{% endblock %}
+
+{% block og_description %}Meet our team and discover how {{ site_name }} helps clients find verified properties across Kenya.{% endblock %}
+
+{% block canonical_url %}{{ site_url }}/about{% endblock %}
+{% block og_url %}{{ site_url }}/about{% endblock %}
 
 {% block content %}
+<link rel="stylesheet" href="{% static 'css/verified-badge.css' %}">
 <style>
   :root {
     --brand-blue: #10284e;
@@ -574,7 +567,7 @@
 <!-- Hero Section -->
 <section class="about-hero">
   <div class="about-hero-content">
-    <h1 class="about-hero-title">Who We Are at DeeValley</h1>
+    <h1 class="about-hero-title">Who We Are at {{ site_name }}</h1>
     <p class="about-hero-subtitle">We help Kenyans and global clients buy, rent, and invest with confidence. Our passion for people and places drives us to deliver personalized, transparent, and professional real estate solutions.</p>
     
     <div class="about-hero-stats">
@@ -634,7 +627,7 @@
     <!-- Team Section -->
     <div class="about-section">
       <h2 class="about-section-title">Meet Our Expert Team</h2>
-      <p class="about-section-subtitle">Our dedicated professionals are here to guide you through every step of your real estate journey with expertise and care.</p>
+      <p class="about-section-subtitle">Every agent shown here has been verified by our admin team, so you can connect with trusted professionals.</p>
       
       <div class="about-team-section">
         <div class="about-team-grid">
@@ -642,10 +635,13 @@
             {% for realtor in realtors %}
             <div class="about-team-card">
               <div class="about-team-image-container">
-                <img src="{{ realtor.photo.url }}" alt="{{ realtor.name }} - DeeValley Realtor" class="about-team-image">
-                <div class="about-team-badge">Realtor</div>
+                <img src="{{ realtor.photo.url }}" alt="{{ realtor.name }} - {{ site_name }} Realtor" class="about-team-image">
+                <div class="about-team-badge verified">Verified</div>
               </div>
-              <h4 class="about-team-name">{{ realtor.name }}</h4>
+              <div class="about-team-name-row">
+                <h4 class="about-team-name mb-0">{{ realtor.name }}</h4>
+                {% include 'partials/_verified_badge.html' %}
+              </div>
               <p class="about-team-title">Professional Realtor</p>
               <div class="about-team-contact">
                 <div class="about-team-contact-item">

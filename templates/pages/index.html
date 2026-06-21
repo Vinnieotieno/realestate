@@ -2,41 +2,24 @@
 {% load static %}
 {% load humanize %}
 
-{% block title %}DeeValley - Premium Real Estate in Kenya | Find Your Dream Home{% endblock %}
+{% block title %}{{ site_name }} | Find Homes, Rentals & Airbnb in Kenya{% endblock %}
+
+{% block meta_description %}Discover verified properties across Kenya with {{ site_name }}. Browse homes for sale, rentals, Airbnb stays, and commercial listings with expert agent support.{% endblock %}
+
+{% block og_title %}{{ site_name }} | Kenya Property Listings & Rentals{% endblock %}
+
+{% block og_description %}Search premium real estate in Kenya — homes, apartments, Airbnb, and investment properties on one trusted platform.{% endblock %}
+
+{% block og_image %}{{ site_url }}{% static 'img/showcase.avif' %}{% endblock %}
 
 {% block meta %}
-  <meta name="description" content="Discover premium real estate in Kenya with DeeValley. Find luxury homes, apartments, commercial properties, and investment opportunities. Expert agents, verified listings, seamless experience.">
-  <meta name="keywords" content="real estate Kenya, luxury homes Nairobi, property investment Kenya, apartments for sale, commercial property Kenya, real estate agents Kenya">
-  <meta name="author" content="DeeValley">
-  <meta name="robots" content="index, follow">
-  <meta name="language" content="English">
-  <meta name="revisit-after" content="7 days">
-  
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://vincentrealestate.com/" />
-  <meta property="og:title" content="DeeValley - Premium Real Estate in Kenya" />
-  <meta property="og:description" content="Discover premium real estate in Kenya. Find luxury homes, apartments, commercial properties, and investment opportunities with expert guidance." />
-  <meta property="og:image" content="{% static 'img/showcase.avif' %}" />
-  <meta property="og:site_name" content="DeeValley" />
-  
-  <!-- Twitter -->
-  <meta property="twitter:card" content="summary_large_image" />
-  <meta property="twitter:url" content="https://vincentrealestate.com/" />
-  <meta property="twitter:title" content="DeeValley - Premium Real Estate in Kenya" />
-  <meta property="twitter:description" content="Discover premium real estate in Kenya. Find luxury homes, apartments, commercial properties, and investment opportunities." />
-  <meta property="twitter:image" content="{% static 'img/showcase.avif' %}" />
-  
-  <!-- Additional SEO -->
-  <link rel="canonical" href="https://vincentrealestate.com/" />
-  <meta name="geo.region" content="KE" />
-  <meta name="geo.placename" content="Nairobi, Kenya" />
-  <meta name="geo.position" content="-1.2921;36.8219" />
-  <meta name="ICBM" content="-1.2921, 36.8219" />
+  <meta name="geo.position" content="-1.2921;36.8219">
+  <meta name="ICBM" content="-1.2921, 36.8219">
 {% endblock %}
 
 {% block extra_css %}
   <link rel="stylesheet" href="{% static 'css/home.css' %}">
+  <link rel="stylesheet" href="{% static 'css/listings.css' %}">
 {% endblock %}
 
 {% block extra_js %}
@@ -181,51 +164,20 @@
     <h2 class="section-title">Featured Properties</h2>
     <p class="section-subtitle">Discover our handpicked selection of premium properties</p>
   </div>
-  
-  <div class="listings-grid">
-    {% for listing in listings %}
-    <div class="listing-card">
-      <div class="listing-image">
-        <img src="{{ listing.photo_main.url }}" alt="{{ listing.title }}">
-        <div class="listing-price">Ksh {{ listing.price|intcomma }}</div>
-      </div>
-      
-      <div class="listing-content">
-        <h3 class="listing-title">{{ listing.title }}</h3>
-        <div class="listing-location">
-          <i class="fas fa-map-marker-alt"></i>
-          {{ listing.city }}, {{ listing.state }}
-        </div>
-        
-        <div class="listing-features">
-          <span class="listing-feature">
-            <i class="fas fa-bed"></i>
-            {{ listing.bedrooms }} Beds
-          </span>
-          <span class="listing-feature">
-            <i class="fas fa-bath"></i>
-            {{ listing.bathrooms }} Baths
-          </span>
-          <span class="listing-feature">
-            <i class="fas fa-th-large"></i>
-            {{ listing.sqft }} sqft
-          </span>
-        </div>
-        {% if listing.slug %}
-          <a href="{% url 'listing' listing.slug %}" class="listing-btn">View Details</a>
-        {% else %}
-          <span class="listing-btn disabled" style="pointer-events:none;opacity:0.5;">No Details</span>
-        {% endif %}
-      </div>
-    </div>
-    {% endfor %}
+
+  <div class="container">
+    {% include 'partials/_listings_grid.html' %}
+  </div>
+
+  <div class="text-center mt-4">
+    <a href="{% url 'listings' %}" class="cta-btn">View All Listings</a>
   </div>
 </section>
 
 <!-- Services Section -->
 <section class="services-section">
   <div class="section-header">
-    <h2 class="section-title">Why Choose DeeValley?</h2>
+    <h2 class="section-title">Why Choose {{ site_name }}?</h2>
     <p class="section-subtitle">We provide comprehensive real estate services with expertise and dedication</p>
   </div>
   
@@ -271,7 +223,7 @@
   <div class="cta-content">
     <h2 class="cta-title">Ready to Find Your Dream Property?</h2>
     <p class="cta-description">
-      Join thousands of satisfied clients who found their perfect home with DeeValley. 
+      Join thousands of satisfied clients who found their perfect home with {{ site_name }}. 
       Start your journey today and experience the difference.
     </p>
     <a href="{% url 'listings' %}" class="cta-btn">

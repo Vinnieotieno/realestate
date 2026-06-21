@@ -1,7 +1,7 @@
 // Cookie Consent Management
 class CookieConsent {
   constructor() {
-    this.cookieName = 'deevalley_cookie_consent';
+    this.cookieName = 'kenya-realestate-platform_cookie_consent';
     this.cookieExpiry = 365; // days
     this.init();
   }

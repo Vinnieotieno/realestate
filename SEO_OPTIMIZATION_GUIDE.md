@@ -20,16 +20,16 @@
 
 ### Title Tag
 ```html
-<title>Professional Property Management Services in Kenya | DeeValley</title>
+<title>Professional Property Management Services in Kenya | Kenya Realestate Platform</title>
 ```
 - **Length**: 60 characters (optimal)
 - **Keywords**: Included naturally
-- **Brand**: DeeValley mentioned
+- **Brand**: Kenya Realestate Platform mentioned
 - **Location**: Kenya specified
 
 ### Meta Description
 ```html
-<meta name="description" content="DeeValley provides professional property management services in Kenya. We manage residential and commercial properties on behalf of owners, handling tenant management, maintenance, and rent collection.">
+<meta name="description" content="Kenya Realestate Platform provides professional property management services in Kenya. We manage residential and commercial properties on behalf of owners, handling tenant management, maintenance, and rent collection.">
 ```
 - **Length**: 160 characters (optimal)
 - **Keywords**: Naturally included
@@ -49,10 +49,10 @@
 
 ### Social Media Optimization
 ```html
-<meta property="og:title" content="Professional Property Management Services | DeeValley">
+<meta property="og:title" content="Professional Property Management Services | Kenya Realestate Platform">
 <meta property="og:description" content="Expert property management services in Kenya. We handle all aspects of property management for property owners.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://deevalley.com/property-management/">
+<meta property="og:url" content="https://kenya-realestate-platform.com/property-management/">
 ```
 
 **Benefits**:
@@ -67,7 +67,7 @@
 ```
 H1: Expert Property Management Services (Main topic)
   H2: Our Property Management Services (Section)
-  H2: Why Choose DeeValley for Property Management? (Section)
+  H2: Why Choose Kenya Realestate Platform for Property Management? (Section)
   H2: Properties We're Managing (Section)
   H3: Service titles (Tenant Management, etc.)
   H3: Benefit titles (Expert Team, etc.)
@@ -86,7 +86,7 @@ H1: Expert Property Management Services (Main topic)
 ```html
 <!-- Property Image -->
 <img src="property.jpg" 
-     alt="Modern 3-bedroom apartment in Nairobi managed by DeeValley"
+     alt="Modern 3-bedroom apartment in Nairobi managed by Kenya Realestate Platform"
      loading="lazy">
 
 <!-- Service Icon -->
@@ -144,9 +144,9 @@ H1: Expert Property Management Services (Main topic)
 {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  "name": "DeeValley Property Management",
+  "name": "Kenya Realestate Platform Property Management",
   "description": "Professional property management services in Kenya",
-  "url": "https://deevalley.com/property-management/",
+  "url": "https://kenya-realestate-platform.com/property-management/",
   "telephone": "+254-XXX-XXXXXX",
   "address": {
     "@type": "PostalAddress",

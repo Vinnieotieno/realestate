@@ -169,6 +169,11 @@ EMAIL_HOST_PASSWORD = 'pcylcjuhxtnedozn'
 DEFAULT_FROM_EMAIL = 'vincentotienoakuku@gmail.com'
 EMAIL_TIMEOUT = 30
 
+# Admin emails for new realtor verification alerts (falls back to staff users, then DEFAULT_FROM_EMAIL)
+REALTOR_ADMIN_NOTIFY_EMAILS = [
+    'vincentotienoakuku@gmail.com',
+]
+
 # For development - disable SSL verification (not recommended for production)
 import ssl
 EMAIL_SSL_KEYFILE = None
@@ -179,6 +184,19 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Google Maps API Key - CRITICAL: Replace with actual key
 GOOGLE_MAPS_API_KEY = 'your_actual_google_maps_api_key_here'
+
+# Site branding & SEO defaults
+SITE_NAME = 'Kenya Realestate Platform'
+SITE_TAGLINE = 'Premium Real Estate in Kenya'
+SITE_DESCRIPTION = (
+    'Kenya Realestate Platform helps you buy, rent, and invest in verified properties '
+    'across Kenya. Browse homes, apartments, Airbnb stays, and commercial listings with expert support.'
+)
+SITE_KEYWORDS = (
+    'Kenya real estate platform, property for sale Kenya, houses for rent Nairobi, '
+    'Airbnb Kenya, commercial property Kenya, real estate agents Kenya, property management Kenya'
+)
+SITE_URL = 'http://127.0.0.1:8000'
 
 # Add requests to requirements if not already there
 

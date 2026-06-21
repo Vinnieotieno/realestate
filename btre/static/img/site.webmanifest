@@ -1,7 +1,7 @@
 {
-  "name": "DeeValley Real Estate",
-  "short_name": "DeeValley",
-  "description": "Premium real estate services in Kenya",
+  "name": "Kenya Realestate Platform",
+  "short_name": "Kenya RE Platform",
+  "description": "Buy, rent, and manage verified properties across Kenya.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
