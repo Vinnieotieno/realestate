@@ -9,11 +9,11 @@ class ListingAdmin(admin.ModelAdmin):
     list_filter = ('property_type', 'realtor', 'realtor__is_verified', 'city', 'state', 'is_published', 'bedrooms', 'bathrooms')
     search_fields = ('title', 'description', 'address', 'city', 'state', 'zipcode', 'price')
     list_per_page = 25
-    prepopulated_fields = {'slug': ('title',)}
-    
+
     fieldsets = (
         ('Basic Information', {
-            'fields': ('title', 'slug', 'property_type', 'description', 'realtor', 'is_published', 'list_date')
+            'fields': ('title', 'slug', 'property_type', 'description', 'realtor', 'is_published', 'list_date'),
+            'description': 'Leave the slug blank to auto-generate it from the title. Duplicate titles are allowed; the URL slug is made unique automatically.'
         }),
         ('Location Details', {
             'fields': ('address', 'city', 'state', 'zipcode', 'latitude', 'longitude'),

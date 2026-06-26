@@ -1152,7 +1152,7 @@
             </div>
             <p class="listing-realtor-title">Property Realtor</p>
             
-            <button type="button" class="listing-inquiry-btn" data-bs-toggle="modal" data-bs-target="#inquiryModal" onclick="console.log('Button clicked')">
+            <button type="button" class="listing-inquiry-btn" data-toggle="modal" data-target="#inquiryModal" data-bs-toggle="modal" data-bs-target="#inquiryModal">
               <i class="fas fa-envelope"></i>
               Make An Inquiry
             </button>
@@ -1520,7 +1520,9 @@
         <h5 class="modal-title" id="inquiryModalLabel">
           <i class="fas fa-envelope"></i> Make An Inquiry
         </h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="close text-white" data-dismiss="modal" data-bs-dismiss="modal" aria-label="Close" style="opacity: 0.9; text-shadow: none;">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
       <div class="modal-body p-4">
         <form action="{% url 'contact' %}" method="POST">

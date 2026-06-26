@@ -55,12 +55,8 @@ class ListingAdminForm(forms.ModelForm):
 
     def clean(self):
         cleaned_data = super().clean()
-        is_published = cleaned_data.get('is_published')
-        realtor = cleaned_data.get('realtor')
-
-        if is_published and realtor and not realtor.is_verified:
-            raise forms.ValidationError(
-                'This listing cannot be published until the assigned realtor is verified by an admin.'
-            )
-
+        # Note: publishing with an unverified realtor is handled gracefully in
+        # ListingAdmin.save_model (it saves the listing as unpublished and warns)
+        # instead of raising a hard validation error that would discard the
+        # whole form (including any newly selected photos).
         return cleaned_data

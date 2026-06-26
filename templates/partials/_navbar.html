@@ -12,7 +12,7 @@
     </a>
 
     <!-- Mobile Toggle Button -->
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation menu">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -148,12 +148,15 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }, { passive: true });
 
-  // Close mobile menu when clicking on a link
+  // Close mobile menu when clicking on a link (Bootstrap 4 / jQuery collapse API)
   navLinks.forEach(link => {
     link.addEventListener('click', () => {
-      if (navbarCollapse.classList.contains('show')) {
-        const bsCollapse = new bootstrap.Collapse(navbarCollapse);
-        bsCollapse.hide();
+      if (navbarCollapse && navbarCollapse.classList.contains('show')) {
+        if (window.jQuery) {
+          window.jQuery(navbarCollapse).collapse('hide');
+        } else {
+          navbarCollapse.classList.remove('show');
+        }
       }
     });
   });

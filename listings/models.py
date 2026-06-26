@@ -52,7 +52,14 @@ class Listing(models.Model):
 
   def save(self, *args, **kwargs):
     if not self.slug:
-      self.slug = slugify(self.title)
+      base_slug = slugify(self.title) or 'listing'
+      unique_slug = base_slug
+      counter = 2
+      # Allow listings to share the same title while keeping slugs (and URLs) unique.
+      while Listing.objects.filter(slug=unique_slug).exclude(pk=self.pk).exists():
+        unique_slug = f"{base_slug}-{counter}"
+        counter += 1
+      self.slug = unique_slug
     super().save(*args, **kwargs)
 
   def get_absolute_url(self):
