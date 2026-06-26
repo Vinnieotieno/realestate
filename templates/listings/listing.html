@@ -24,6 +24,54 @@
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
   <script src="{% static 'js/listing-gallery.js' %}"></script>
   <script src="{% static 'js/listing-map.js' %}"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var inquiryModal = document.getElementById('inquiryModal');
+      var inquiryBtn = document.querySelector('.listing-inquiry-btn');
+      if (!inquiryModal) return;
+
+      // Move the modal to <body> so it can never be trapped inside a
+      // positioned/transformed ancestor (which breaks position: fixed and
+      // can leave the modal unclickable behind the backdrop).
+      if (inquiryModal.parentNode !== document.body) {
+        document.body.appendChild(inquiryModal);
+      }
+
+      function liftModalAboveBackdrop() {
+        // Force correct stacking with inline styles so it wins even if an old
+        // cached stylesheet pushed the backdrop above the modal.
+        inquiryModal.style.zIndex = '100050';
+        var backdrops = document.querySelectorAll('.modal-backdrop');
+        backdrops.forEach(function (bd) {
+          bd.style.zIndex = '100040';
+        });
+      }
+
+      function showInquiryModal() {
+        if (window.jQuery && window.jQuery.fn && window.jQuery.fn.modal) {
+          window.jQuery(inquiryModal)
+            .one('shown.bs.modal', liftModalAboveBackdrop)
+            .modal('show');
+        } else if (window.bootstrap && window.bootstrap.Modal) {
+          var Ctor = window.bootstrap.Modal;
+          var instance = Ctor.getOrCreateInstance
+            ? Ctor.getOrCreateInstance(inquiryModal)
+            : new Ctor(inquiryModal);
+          instance.show();
+        }
+        // Run immediately too (covers the no-animation / instant-show case).
+        setTimeout(liftModalAboveBackdrop, 0);
+        setTimeout(liftModalAboveBackdrop, 250);
+      }
+
+      if (inquiryBtn) {
+        inquiryBtn.addEventListener('click', function (e) {
+          e.preventDefault();
+          showInquiryModal();
+        });
+      }
+    });
+  </script>
 {% endblock %}
 
 {% block content %}
@@ -1152,7 +1200,7 @@
             </div>
             <p class="listing-realtor-title">Property Realtor</p>
             
-            <button type="button" class="listing-inquiry-btn" data-toggle="modal" data-target="#inquiryModal" data-bs-toggle="modal" data-bs-target="#inquiryModal">
+            <button type="button" class="listing-inquiry-btn">
               <i class="fas fa-envelope"></i>
               Make An Inquiry
             </button>

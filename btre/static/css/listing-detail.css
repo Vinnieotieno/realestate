@@ -32,9 +32,12 @@
   z-index: 10050;
 }
 
-.property-gallery-modal + .modal-backdrop,
-.modal-backdrop.show {
+.property-gallery-modal + .modal-backdrop {
   z-index: 10040;
+}
+
+#inquiryModal {
+  z-index: 10050;
 }
 
 .property-gallery-modal .modal-dialog {
